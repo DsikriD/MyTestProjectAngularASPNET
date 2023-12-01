@@ -1,0 +1,47 @@
+
+<div *ngIf="!loading" class="d-flex justify-content-center">
+  <div class="spinner-grow me-2" style="width: 1rem; height: 1rem;" role="status">
+    <span class="visually-hidden">Загрузка...</span>
+  </div>
+  <div class="spinner-grow me-2" style="width: 1rem; height: 1rem;" role="status">
+    <span class="visually-hidden">Загрузка...</span>
+  </div>
+  <div class="spinner-grow me-2" style="width: 1rem; height: 1rem;" role="status">
+    <span class="visually-hidden">Загрузка...</span>
+  </div>
+</div>
+
+
+
+<div *ngIf="loading" class="">
+  <div class="row mb-2 ms-1">
+    <div class="col col-md-2 me-2">
+      <h1 class="font-weight-bold">Категории</h1>
+    </div>
+    <div class="col col-md-2"></div>
+      <div class="col col-md-2">
+        <app-modal></app-modal>
+      </div>
+    </div>
+
+
+    <div class="row border border-dark rounded w-50  ms-3">
+      <table *ngIf="loading" class='table table-striped' aria-labelledby="tableLabel">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td class="text-end"><button type="button" (click)="deleteCategory(category.id)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

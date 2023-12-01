@@ -1,0 +1,16 @@
+<h1>Типы</h1>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="appTypes">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appType of appTypes">
+      <td>{{ appType.id }}</td>
+      <td>{{ appType.name }}</td>
+    </tr>
+  </tbody>
+</table>

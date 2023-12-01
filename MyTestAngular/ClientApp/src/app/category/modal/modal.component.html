@@ -1,0 +1,24 @@
+
+  <button class="btn btn-primary text-wraped" (click)="Close()"><i class="fa fa-plus"></i>&nbsp; Добавить категорию</button>
+
+
+<div *ngIf="hideModal" class="bg-dark position-fixed start-0 end-0 top-0 bottom-0 opacity-25"></div>
+<form ng-form="">
+<div *ngIf="hideModal" class="position-absolute col-md-3 translate-middle top-50">
+  <div class="bg-light row rounded"> 
+    <div class="col-6 mt-2 text-start">
+      Новая категория
+    </div>
+    <div class="col-6 mt-2 text-end">
+      <button type="button" class="btn-close" (click)="Close()" aria-label="Close"></button>
+    </div>
+    <div class="col-12 mt-2">
+      <input class="form-control form-control-sm" type="text" id="name" [(ngModel)]='category.name' [ngModelOptions]="{standalone: true}" placeholder="Название категории" aria-label="Category">
+      <span *ngIf="category.name.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
+    </div>
+    <div class="col-12 mt-2 mb-2 text-center">
+      <button class="btn btn-primary"  (click)="(category.name.length>=3) ? addCategory() : null; ">Добавить категорию</button>
+    </div>
+  </div>
+</div>
+ </form>
