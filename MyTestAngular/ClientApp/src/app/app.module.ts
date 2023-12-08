@@ -14,6 +14,7 @@ import { ModalComponent } from './category/modal/modal.component';
 import { EventEmitterService } from './category/event-emitter.service';
 import { ApplicationTypeComponent } from './applicationtype/applicationtype.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

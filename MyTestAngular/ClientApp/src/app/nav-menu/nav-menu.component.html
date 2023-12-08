@@ -1,3 +1,5 @@
+
+
 <header>
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
@@ -19,10 +21,24 @@
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
           </li>
 
+
+          <li class="nav-item dropdown">
+            <a class="nav-link menu-item dropdown-toggle" data-toggle="dropdown" role="button" (click)="Drop()" aria-haspopup="true" aria-expanded="true">Clasificaciones</a>
+            <div class=" dropdown dropdown-menu" [ngClass]="{show: IsDrop}">
+              <a class="dropdown-item menu-item" href="#">Equipos</a>
+              <a class="dropdown-item menu-item" href="#">Jugadoras</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </li>
+
+
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/category']">Category</a>
           </li>
+          <li>
 
+          </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/applicationtype']">AppType</a>
           </li>
