@@ -7,6 +7,7 @@ import { Category } from '../modal/category.mode';
 })
 export class EventEmitterService {
   invokeFirstComponentFunction = new EventEmitter();
+  invokeTwoComponentFunction = new EventEmitter();
   subsVar: Subscription | undefined;
 
   category: Category={
@@ -17,6 +18,12 @@ export class EventEmitterService {
   constructor() {
     
   }
+
+  onEditClick(category: Category) {
+  this.category = category;
+    this.invokeTwoComponentFunction.emit();
+  }
+
 
   onButtonClick(category: Category) {
     this.category = category;

@@ -13,6 +13,8 @@ import { CategoryComponent } from './category/category.component';
 import { ModalComponent } from './category/modal/modal.component';
 import { EventEmitterService } from './category/event-emitter.service';
 import { ApplicationTypeComponent } from './applicationtype/applicationtype.component';
+import { LoadingComponent } from './loading/loading.component';
+import { EditComponent } from './category/edit/edit.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ApplicationTypeComponent } from './applicationtype/applicationtype.comp
     AppComponent,
     NavMenuComponent,
     HomeComponent,
+    EditComponent,
     CategoryComponent,
+    LoadingComponent,
     ModalComponent,
     CounterComponent,
     FetchDataComponent,
@@ -35,7 +39,7 @@ import { ApplicationTypeComponent } from './applicationtype/applicationtype.comp
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'category', component: CategoryComponent },
-      {path: 'applicationtype', component: ApplicationTypeComponent}
+      { path: 'applicationtype', component: ApplicationTypeComponent }
     ])
   ],
   providers: [

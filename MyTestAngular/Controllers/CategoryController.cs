@@ -12,7 +12,6 @@ namespace MyTestAngular.Controllers
         private readonly ILogger<Category> _logger;
         private readonly ApplicationDbContext _db;
 
-
         public CategoryController(ILogger<Category> logger, ApplicationDbContext db)
         {
             _logger = logger;
@@ -20,48 +19,48 @@ namespace MyTestAngular.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Category> Get()
+        public async Task<IEnumerable<Category>> Get()
         {
-            return _db.Category;
+            return await _db.Category.ToListAsync();
         }
 
         [HttpPost]
-        public void Add(Category category)
+        public async Task<ActionResult<Category>> Add(Category category)
         {
-            if (category != null)
-            {
-                _db.Category.Add(category);
-                _db.SaveChanges();
-            }
+            if (category == null)
+                return BadRequest();
 
+            _db.Category.Add(category);
+            await _db.SaveChangesAsync();
+            return Ok(category);
         }
 
         [HttpPut]
-        public void Update(Category category) {
+        public async Task<ActionResult<Category>>  Update(Category category) {
 
             if (category == null)
-                return;
-
+                return BadRequest();
             var objCat = _db.Category.Find(category.Id);
-            objCat.Name = category.Name;
-            _db.SaveChanges();
+            if (objCat == null)
+                return NotFound();
 
+            objCat.Name = category.Name;
+            await _db.SaveChangesAsync();
+
+            return Ok(objCat);
         }
 
-
-
         [HttpDelete("{id}")]
-        public ActionResult Delete([FromRoute]int id)
+        public async Task<ActionResult> Delete([FromRoute]int id)
         {
-;
             var obj = _db.Category.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
             _db.Category.Remove(obj);//Удаление в бд
-            _db.SaveChanges();// Сохранение в бд - только после этого категория попадет в бд
-            return Ok();
+            await _db.SaveChangesAsync();// Сохранение в бд - только после этого категория попадет в бд
+            return Ok(obj);
 
         }
     }

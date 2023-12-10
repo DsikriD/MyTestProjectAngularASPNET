@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { Category } from '../../modal/category.mode';
 import { EventEmitterService } from '../event-emitter.service';

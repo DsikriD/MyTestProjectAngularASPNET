@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, OnInit} from '@angular/core';
+import { Component, EventEmitter, Inject, Injectable, Input, OnInit, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitterService } from './event-emitter.service';
 import { Category } from '../modal/category.mode';
@@ -18,26 +18,34 @@ export class CategoryComponent implements OnInit{
   private baseUrl: string = "";
   loading: boolean = false;
   http: HttpClient;
-
+  
+ 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private eventEmitterService: EventEmitterService) {
     this.baseUrl = baseUrl;
     this.http = http;
+
     this.getCategory();
   }
     ngOnInit(): void {
       if (this.eventEmitterService.subsVar == undefined) {
         this.eventEmitterService.subsVar = this.eventEmitterService.
           invokeFirstComponentFunction.subscribe((name: string) => {
-            console.log("ConsoleLOG" + this.eventEmitterService.category.id + this.eventEmitterService.category.name);
             this.addCategory(this.eventEmitterService.category);
           });
       } 
-    }
+  }
+
+  edit(category: Category) {
+    console.log("NEEEEEED Edit!!!!" + category.name + category.id);
+    this.loading = false;
+    return this.http.put<Category>(this.baseUrl + 'Category/',category).subscribe(result => {
+      this.getCategory();
+    });
+  }
 
   addCategory(category: Category) {
     this.loading = false;
-    return this.http.post<Category>(this.baseUrl + 'Category/', category).subscribe(result => {
-      console.log("ConsoleLOG" + result);
+        return this.http.post<Category>(this.baseUrl + 'Category/', category).subscribe(result => {
       this.getCategory();
     });
   }
