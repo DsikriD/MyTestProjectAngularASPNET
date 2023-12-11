@@ -15,6 +15,7 @@ export class EditComponent {
     name : ''
   }
   @Output() categoryForEdit = new EventEmitter();
+
   constructor() {
 
   }

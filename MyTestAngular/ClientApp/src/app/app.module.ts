@@ -15,6 +15,8 @@ import { EventEmitterService } from './category/event-emitter.service';
 import { ApplicationTypeComponent } from './applicationtype/applicationtype.component';
 import { LoadingComponent } from './loading/loading.component';
 import { EditComponent } from './category/edit/edit.component';
+import { AddtypeComponent } from './applicationtype/addtype/addtype.component';
+import { EdittypeComponent } from './applicationtype/edittype/edittype.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { EditComponent } from './category/edit/edit.component';
     LoadingComponent,
     ModalComponent,
     CounterComponent,
+    AddtypeComponent,
+    EdittypeComponent,
     FetchDataComponent,
     ApplicationTypeComponent
   ],

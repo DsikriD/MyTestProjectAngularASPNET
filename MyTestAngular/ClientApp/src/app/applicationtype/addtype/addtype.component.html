@@ -1,0 +1,22 @@
+
+<button class="btn btn-primary" (click)="Close()"><i class="fa fa-plus">&nbsp;</i>Добавить тип</button>
+
+<div *ngIf="hideModal" class="bg-dark position-fixed start-0 end-0 top-0 bottom-0 opacity-25"></div>
+
+<div *ngIf="hideModal" class="position-absolute col-md-3 translate-middle top-50">
+  <div class="bg-light row rounded">
+    <div class="col-6 mt-2 text-start">
+      Новый тип
+    </div>
+    <div class="col-6 mt-2 text-end">
+      <button type="button" class="btn-close" (click)="Close()" aria-label="Close"></button>
+    </div>
+    <div class="col-12 mt-2">
+      <input class="form-control form-control-sm" type="text" id="name" [(ngModel)]='type.name' [ngModelOptions]="{standalone: true}" placeholder="Название категории" aria-label="Category">
+      <span *ngIf="type.name.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
+    </div>
+    <div class="col-12 mt-2 mb-2 text-center">
+      <button class="btn btn-primary" (click)="(type.name.length>=3) ? addType() : null; ">Добавить тип</button>
+    </div>
+  </div>
+</div>

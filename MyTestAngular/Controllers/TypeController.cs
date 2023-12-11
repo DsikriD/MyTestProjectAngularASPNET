@@ -38,14 +38,21 @@ namespace MyTestAngular.Controllers
         }
 
         [HttpPut]
-        public void Update(ApplicationType type) {
+        public async Task<ActionResult<ApplicationType>> Update(ApplicationType type) {
 
             if (type == null)
-                return;
+                return BadRequest();
 
-            var objCat = _db.Category.Find(type.Id);
+            var objCat = _db.ApplicationTypes.Find(type.Id);
+
+            if(objCat== null)
+                return NotFound();
+
             objCat.Name = type.Name;
-            _db.SaveChanges();
+
+            await _db.SaveChangesAsync();
+
+            return Ok(type);
 
         }
 

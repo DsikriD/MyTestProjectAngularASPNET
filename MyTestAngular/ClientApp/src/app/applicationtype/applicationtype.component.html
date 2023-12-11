@@ -1,38 +1,42 @@
 
-
-<div class="row ms-2 me-2">
-  <div class="col-6 mb-3">
-    <h1 class="font-weight-bold">Типы</h1>
-  </div>
-  <div class="col-6 text-end">
-    <button class="btn btn-primary form-control mt-2">
-      <span><i class="fa fa-plus"><span>&nbsp;</span></i>Добавить тип</span>
-    </button>
-  </div>
+<div *ngIf="!loading" class="d-flex justify-content-center">
+  <app-loading></app-loading>
 </div>
 
-<div class="row border border-dark ms-2 me-2 mb-3">
-  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="appTypes">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let appType of appTypes">
-        <td>{{ appType.id }}</td>
-        <td>{{ appType.name }}</td>
-        <td class="text-end">
-          <button class="btn btn-outline-warning me-3">
-            <i class="fa fa-edit"></i>
-          </button>
-          <button class="btn btn-outline-danger">
-            <i class="fa fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div *ngIf="loading">
+  <div class="row ms-1 me-1 mb-2">
+    <div class="col-6">
+      <h1 class="font-weight-bold">Тип</h1>
+    </div>
+    <div class="col-6 text-end">
+      <app-addtype (typeForAdd)="addType($event)"></app-addtype>
+    </div>
+  </div>
+
+  <div class="row border border-dark ms-2 me-2 mb-2">
+    <table *ngIf="loading" class='table table-striped' aria-labelledby="tableLabel">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let type of appTypes">
+          <td>{{ type.id }}</td>
+          <td>{{ type.name }}</td>
+          <td class="text-end">
+            <app-edittype [type]="type" (typeForEdit)="editType($event)" ></app-edittype>
+          </td>
+          <td class="text-end">
+            <button type="button" class="btn btn-outline-danger" (click)="deleteType(type.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
+
