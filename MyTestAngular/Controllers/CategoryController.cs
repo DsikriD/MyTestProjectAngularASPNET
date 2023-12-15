@@ -53,6 +53,9 @@ namespace MyTestAngular.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete([FromRoute]int id)
         {
+            if (id == null)
+                return BadRequest();
+
             var obj = _db.Category.Find(id);
             if (obj == null)
             {

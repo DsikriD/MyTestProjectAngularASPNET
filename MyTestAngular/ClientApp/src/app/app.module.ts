@@ -17,6 +17,9 @@ import { LoadingComponent } from './loading/loading.component';
 import { EditComponent } from './category/edit/edit.component';
 import { AddtypeComponent } from './applicationtype/addtype/addtype.component';
 import { EdittypeComponent } from './applicationtype/edittype/edittype.component';
+import { ProductComponent } from './product/product.component';
+import { ProducteditComponent } from './product/productedit/productedit.component';
+import { ProductaddComponent } from './product/productadd/productadd.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { EdittypeComponent } from './applicationtype/edittype/edittype.component
     ModalComponent,
     CounterComponent,
     AddtypeComponent,
+    ProductComponent, 
     EdittypeComponent,
+    ProductaddComponent,
+    ProducteditComponent,
     FetchDataComponent,
     ApplicationTypeComponent
   ],
@@ -43,7 +49,8 @@ import { EdittypeComponent } from './applicationtype/edittype/edittype.component
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'category', component: CategoryComponent },
-      { path: 'applicationtype', component: ApplicationTypeComponent }
+      { path: 'applicationtype', component: ApplicationTypeComponent },
+      { path: 'product', component: ProductComponent }
     ])
   ],
   providers: [

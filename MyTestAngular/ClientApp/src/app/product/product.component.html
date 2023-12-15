@@ -1,0 +1,52 @@
+<div *ngIf="!loading" class="d-flex justify-content-center">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="loading">
+  <div class="row ms-1 me-1 mb-2">
+    <div class="col-6">
+      <h1 class="font-weight-bold">Товары</h1>
+    </div>
+    <div class="col-6 text-end">
+      <app-productadd (productToAdd)="addProduct($event)" ></app-productadd>
+    </div>
+  </div>
+
+  <div class="row border border-dark ms-2 me-2 mb-2">
+    <table *ngIf="loading" class='table table-striped' aria-labelledby="tableLabel">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>shortdes</th>
+          <th>description</th>
+          <th>price</th>
+          <th>image</th>
+          <th>categoryid</th>
+          <th>appid</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.shortDes }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.image }}</td>
+          <td>{{ product.categoryId }}</td>
+          <td>{{ product.applicationTypeId }}</td>
+          <td class="text-end">
+            <button class="btn btn-danger" (click)="deleteProduct(product.id)"><i class="fa fa-trash"></i></button>
+          </td>
+          <td class="text-end">
+            <app-productedit></app-productedit>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

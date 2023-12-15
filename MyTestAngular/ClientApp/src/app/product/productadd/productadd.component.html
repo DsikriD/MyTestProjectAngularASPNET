@@ -1,0 +1,76 @@
+<button class="btn btn-primary" (click)="Close()"><i class="fa fa-plus">&nbsp;</i>Добавить товар</button>
+
+
+
+<div *ngIf="hideModal" class="bg-dark position-fixed start-0 end-0 top-0 bottom-0 opacity-25"></div>
+
+<div *ngIf="hideModal" class="position-absolute col-md-3 translate-middle top-50">
+  <div class="bg-light row rounded">
+    <div class="col-6 mt-2 text-start">
+      <p class="font-weight-bold">Новый продукт</p>
+    </div>
+    <div class="col-6 mt-2 text-end">
+      <button type="button" class="btn-close" (click)="Close()" aria-label="Close"></button>
+    </div>
+    <div class="col-12 mt-2">
+
+      <div class="text-start">
+        <span>Название продукта:</span>
+      </div>
+      <input class="form-control form-control-sm" type="text" id="name" [(ngModel)]='product.name' [ngModelOptions]="{standalone: true}" placeholder="Название продукта" aria-label="Product">
+      <span *ngIf="product.name.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
+
+      <div class="text-start">
+        <span>Краткое описание:</span>
+      </div>
+      <textarea [(ngModel)]="product.shortDes" class="summernote form-control"></textarea>
+      <span *ngIf="product.shortDes.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
+
+      <div class="text-start">
+        <span>Описание:</span>
+      </div>
+      <textarea [(ngModel)]="product.description" class="summernote form-control"></textarea>
+      <span *ngIf="product.description.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
+
+
+
+      <div class="text-start">
+        <span>Изображение:</span>
+      </div>
+      <input [(ngModel)]="selectedFile" type="file" name="files" id="uploadBox" multiple class="form-control" />
+      <span *ngIf="product.image.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
+
+      <div class="text-start">
+        <span>Цена:</span>
+      </div>
+      <input class="form-control form-control-sm" type="text" id="name" [(ngModel)]='product.price' [ngModelOptions]="{standalone: true}" placeholder="Цена" aria-label="Product">
+      <span *ngIf="" class="text-danger text-danger">Количество символов меньше 3</span>
+
+      <div class="text-start">
+        <span>Катеогрия:</span>
+      </div>
+      <div class="text-start">
+        <select class="form-control" [(ngModel)]="product.categoryId">
+          <option *ngFor="let c of categorys" [ngValue]="c.id">{{c.name}}</option>
+        </select>
+      </div>
+      <span *ngIf="" class="text-danger text-danger">Количество символов меньше 3</span>
+
+      <div class="text-start">
+        <span>Тип:</span>
+      </div>
+      <div class="text-start">
+        <select class="form-control" [(ngModel)]="product.applicationTypeId">
+          <option *ngFor="let c of types" [ngValue]="c.id">{{c.name}}</option>
+        </select>
+        <span *ngIf="" class="text-danger text-danger">Количество символов меньше 3</span>
+      </div>
+
+    </div>
+    <div class="col-12 mt-2 mb-2 text-center">
+      <button class="btn btn-primary" (click)="isFillProduct()?addProduct(): AlertMessage()">Добавить тип</button>
+      <button class="btn btn-danger"(click)="testFile()" >Test </button>
+    </div>
+  </div>
+</div>
+

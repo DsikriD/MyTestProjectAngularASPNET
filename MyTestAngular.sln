@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTestAngular", "MyTestAngular\MyTestAngular.csproj", "{73C5593D-87DD-44A6-BAAD-7A65DF85C101}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTestAngular", "MyTestAngular\MyTestAngular.csproj", "{73C5593D-87DD-44A6-BAAD-7A65DF85C101}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{EB2C57DA-75D5-408E-B7E7-4B89CB101EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{EB2C57DA-75D5-408E-B7E7-4B89CB101EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{24AF2B31-BFE2-431D-8229-EC00948436B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{24AF2B31-BFE2-431D-8229-EC00948436B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{074A5259-4086-4275-AA81-B1F0AAF1D6FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{24AF2B31-BFE2-431D-8229-EC00948436B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24AF2B31-BFE2-431D-8229-EC00948436B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24AF2B31-BFE2-431D-8229-EC00948436B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{074A5259-4086-4275-AA81-B1F0AAF1D6FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074A5259-4086-4275-AA81-B1F0AAF1D6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074A5259-4086-4275-AA81-B1F0AAF1D6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074A5259-4086-4275-AA81-B1F0AAF1D6FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

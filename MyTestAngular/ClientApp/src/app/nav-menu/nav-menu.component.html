@@ -1,5 +1,4 @@
 
-
 <header>
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
@@ -22,15 +21,17 @@
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
           </li>
 
-
           <li class="nav-item dropdown">
+
             <a class="nav-link menu-item dropdown-toggle" data-toggle="dropdown" role="button" (click)="Drop()" aria-haspopup="true" aria-expanded="true">Управление контетом</a>
             <div class=" dropdown dropdown-menu" [ngClass]="{show: IsDrop}">
-              <a class="nav-link text-dark" [routerLink]="['/category']">Категории</a>
-              <a class="nav-link text-dark" [routerLink]="['/applicationtype']">Тип</a>
-              <!--<div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">Separated link</a>-->
-            </div>
+       
+                  <a class="nav-link text-dark" [routerLink]="['/category']">Категории</a>
+
+                  <a class="nav-link text-dark" [routerLink]="['/applicationtype']">Тип</a>
+       
+                  <a class="nav-link text-dark" [routerLink]="['/product']">Товары</a>
+             </div>
           </li>
 
         </ul>
