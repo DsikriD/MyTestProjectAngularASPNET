@@ -11,6 +11,7 @@ export interface Product {
   categoryId: number,
   applicationTypeId:number,
   tempCount: number
+  imageFile?: FormData
 
 
   //"id": 8,

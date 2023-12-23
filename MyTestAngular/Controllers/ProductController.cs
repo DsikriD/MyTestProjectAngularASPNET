@@ -29,31 +29,33 @@ namespace MyTestAngular.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Product>> Add([FromBody] Product product)
+        public async Task<ActionResult<Product>> Add([FromForm]  IFormFile file)
         {
-            Console.WriteLine(product.Id + product.Name + product.Image + product.Price);
-            if (product == null)
-                return BadRequest();
+            //Console.WriteLine(product.Id + product.Name + product.Image + product.Price);
+            //if (product == null)
+            //    return BadRequest();
 
-            var files = HttpContext.Request.Form.Files;
+            var files = file;
             string webRootPath = _webHostEnvironment.WebRootPath;
 
             string upload = webRootPath + WebConstant.ImagePath;
             string fileName = Guid.NewGuid().ToString();
-            string extension = Path.GetExtension(files[0].FileName);// расширение
+            string extension = Path.GetExtension(files.FileName);// расширение
 
-            return NotFound();
+           
             using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
             {
-                files[0].CopyTo(fileStream);
+                files.CopyTo(fileStream);
             }
 
-            product.Image = fileName + extension;
+            //product.Image = fileName + extension;
+            //Console.Write(product.Image);
+            return NotFound();
 
-            _db.Product.Add(product);
-            await _db.SaveChangesAsync();
+            //_db.Product.Add(product);
+            //await _db.SaveChangesAsync();
 
-            return Ok(product);
+            //return Ok(product);
         }
 
         [HttpDelete("{id}")]

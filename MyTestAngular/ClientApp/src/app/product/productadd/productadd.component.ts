@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { ApplicationType } from '../../modal/applicationtype.mode';
 import { Category } from '../../modal/category.mode';
 import { Product } from '../../modal/product.mode';
@@ -12,6 +13,7 @@ import { Product } from '../../modal/product.mode';
 export class ProductaddComponent {
   hideModal: boolean = false;
   http: HttpClient;
+  selectedFile: File | undefined;
   baseUrl: string;
   categorys: Category[] = [];
   types: ApplicationType[] = [];
@@ -26,14 +28,14 @@ export class ProductaddComponent {
     name: ''
   }
 
-  selectedFile: File | undefined;
-
-  onSelectFile(fileInput: any) {
-    this.selectedFile = <File>fileInput.target.files[0];
-  }
-
-  testFile() {
-    console.log(this.selectedFile);
+  onFileSelected(event:any) {
+    this.selectedFile = <File>event.target.files[0];
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile?.name);
+      console.log(this.selectedFile);
+      this.product.imageFile = formData;
+    }
   }
 
   product: Product = {
@@ -61,10 +63,6 @@ export class ProductaddComponent {
     });
 
   }
-
- 
-
-
 
   isFillProduct() {
     if (this.product.name == '' || this.product.shortDes == '' || this.product.description == '' || this.product.image == '' || this.product.price<=0 )

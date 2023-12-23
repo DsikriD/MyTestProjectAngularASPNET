@@ -28,9 +28,10 @@ export class ProductComponent {
   }
 
   addProduct(product: Product) {
+    console.log(product.imageFile)
     console.log(product);
     this.loading = false;
-    this.http.post<Product>(this.baseUrl + 'Product/', product).subscribe(result => {
+    this.http.post<Product>(this.baseUrl + 'Product/', product.imageFile).subscribe(result => {
       this.getProduct();
     });
   }

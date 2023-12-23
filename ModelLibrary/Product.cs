@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace ModelLibrary
 {
@@ -40,5 +41,7 @@ namespace ModelLibrary
         [NotMapped] // не добалвять в бд 
         [Range(1, 100, ErrorMessage = "Количество должно быть больше 0")]
         public int TempCount { get; set; }
+        [NotMapped]
+        public IFormFile imageFile { get; set; }
     }
 }
