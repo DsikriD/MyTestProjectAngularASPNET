@@ -50,8 +50,14 @@ namespace MyTestAngular.Controllers
                 return BadRequest();
 
             var product = _db.Product.FirstOrDefault(x => x.Id == id);
-        
-            if (product == null)
+
+            string webRootPath = _webHostEnvironment.WebRootPath;
+            string Path = webRootPath + WebConstant.ImagePath;
+
+            if (System.IO.File.Exists(Path + product?.Image))
+                System.IO.File.Delete(Path + product?.Image);
+
+                if (product == null)
                 return NotFound();
 
             _db.Product.Remove(product);

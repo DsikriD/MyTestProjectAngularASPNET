@@ -20,6 +20,8 @@ import { EdittypeComponent } from './applicationtype/edittype/edittype.component
 import { ProductComponent } from './product/product.component';
 import { ProducteditComponent } from './product/productedit/productedit.component';
 import { ProductaddComponent } from './product/productadd/productadd.component';
+import { HomeCardComponent } from './home/home-card/home-card.component';
+
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { ProductaddComponent } from './product/productadd/productadd.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
+    HomeCardComponent,
     EditComponent,
     CategoryComponent,
     LoadingComponent,
