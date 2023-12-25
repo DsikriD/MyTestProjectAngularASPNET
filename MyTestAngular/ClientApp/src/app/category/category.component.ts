@@ -37,7 +37,8 @@ export class CategoryComponent implements OnInit{
 
   edit(category: Category) {
     this.loading = false;
-    return this.http.put<Category>(this.baseUrl + 'Category/',category).subscribe(result => {
+    return this.http.put<Category>(this.baseUrl + 'Category/', category).subscribe(result => {
+      console.log(result)
       this.getCategory();
     });
   }

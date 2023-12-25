@@ -1,18 +1,16 @@
 import { ApplicationType } from "./applicationtype.mode";
 import { Category } from "./category.mode";
 
-export interface Product {
-  id: number,
-  name: string,
-  shortDes: string,
-  description: string,
-  price: number,
-  image: string,
-  categoryId: number,
-  applicationTypeId:number,
+export interface Product{
+  id: number
+  name: string
+  shortDes: string
+  description: string
+  price: number
+  image: string
+  categoryId: number
+  applicationTypeId:number
   tempCount: number
-  imageFile?: FormData
-
 
   //"id": 8,
   //"name": "Prod",
@@ -26,3 +24,4 @@ export interface Product {
   //"applicationType": null,
   //"tempCount": 1
 }
+

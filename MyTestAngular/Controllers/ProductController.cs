@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelLibrary;
+using ModelLibrary.ViewModel;
 using Utility;
 
 namespace MyTestAngular.Controllers
@@ -27,35 +28,18 @@ namespace MyTestAngular.Controllers
             return await _db.Product.ToListAsync();
         }
 
-
+       
         [HttpPost]
-        public async Task<ActionResult<Product>> Add([FromForm]  IFormFile file)
+        public async Task<ActionResult<Product>> Add([FromBody]Product product)
         {
-            //Console.WriteLine(product.Id + product.Name + product.Image + product.Price);
-            //if (product == null)
-            //    return BadRequest();
+            if (product == null)
+                BadRequest();
 
-            var files = file;
-            string webRootPath = _webHostEnvironment.WebRootPath;
 
-            string upload = webRootPath + WebConstant.ImagePath;
-            string fileName = Guid.NewGuid().ToString();
-            string extension = Path.GetExtension(files.FileName);// расширение
+            _db.Product.Add(product);
+            await _db.SaveChangesAsync();
 
-           
-            using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
-            {
-                files.CopyTo(fileStream);
-            }
-
-            //product.Image = fileName + extension;
-            //Console.Write(product.Image);
-            return NotFound();
-
-            //_db.Product.Add(product);
-            //await _db.SaveChangesAsync();
-
-            //return Ok(product);
+            return Ok(product);
         }
 
         [HttpDelete("{id}")]

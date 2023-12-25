@@ -17,7 +17,7 @@
       <div class="text-start">
         <span>Название продукта:</span>
       </div>
-      <input class="form-control form-control-sm" type="text" id="name" [(ngModel)]='product.name' [ngModelOptions]="{standalone: true}" placeholder="Название продукта" aria-label="Product">
+      <input class="form-control form-contro-sm" type="text" id="name" [(ngModel)]='product.name' [ngModelOptions]="{standalone: true}" placeholder="Название продукта" aria-label="Product">
       <span *ngIf="product.name.length<3" class="text-danger text-danger">Количество символов меньше 3</span>
 
       <div class="text-start">

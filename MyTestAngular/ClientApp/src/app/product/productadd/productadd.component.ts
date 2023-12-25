@@ -3,7 +3,8 @@ import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ApplicationType } from '../../modal/applicationtype.mode';
 import { Category } from '../../modal/category.mode';
-import { Product } from '../../modal/product.mode';
+import { Image } from '../../modal/Image';
+import { Product} from '../../modal/product.mode';
 
 @Component({
   selector: 'app-productadd',
@@ -19,22 +20,12 @@ export class ProductaddComponent {
   types: ApplicationType[] = [];
   @Output() productToAdd = new EventEmitter();
 
-  Aptype: ApplicationType = {
-    id: 0,
-    name: ''
-  }
-  category: ApplicationType = {
-    id: 0,
-    name: ''
-  }
-
   onFileSelected(event:any) {
     this.selectedFile = <File>event.target.files[0];
     if (this.selectedFile) {
       const formData = new FormData();
       formData.append('file', this.selectedFile, this.selectedFile?.name);
-      console.log(this.selectedFile);
-      this.product.imageFile = formData;
+      this.addImage(formData);
     }
   }
 
@@ -61,11 +52,17 @@ export class ProductaddComponent {
     this.http.get<ApplicationType[]>(this.baseUrl + 'Type').subscribe(result => {
       this.types = result;
     });
+  }
 
+  addImage(imageFile: FormData) {
+    console.log(imageFile.getAll + ": addImage");
+    this.http.put<Image>(this.baseUrl + 'Image/', imageFile).subscribe(result => {
+      this.product.image = result.name as string;
+    });
   }
 
   isFillProduct() {
-    if (this.product.name == '' || this.product.shortDes == '' || this.product.description == '' || this.product.image == '' || this.product.price<=0 )
+    if (this.product.name == '' || this.product.shortDes == '' || this.product.description == '' || this.product.image == '' || this.product.price )
       return false;
     return true;
   }
@@ -75,6 +72,7 @@ export class ProductaddComponent {
   }
 
   addProduct() {
+
     this.productToAdd.emit(this.product);
   }
 

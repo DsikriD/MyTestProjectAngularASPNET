@@ -41,7 +41,6 @@ namespace ModelLibrary
         [NotMapped] // не добалвять в бд 
         [Range(1, 100, ErrorMessage = "Количество должно быть больше 0")]
         public int TempCount { get; set; }
-        [NotMapped]
-        public IFormFile imageFile { get; set; }
+       
     }
 }
