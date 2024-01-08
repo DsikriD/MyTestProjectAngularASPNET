@@ -1,2 +1,4 @@
 
-<app-home-card></app-home-card>
+<div *ngFor="let product of products" class="border border-danger">
+  <app-home-card [productCard]="product"></app-home-card>
+</div>

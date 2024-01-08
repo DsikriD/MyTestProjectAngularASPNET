@@ -33,7 +33,7 @@ namespace MyTestAngular.Controllers
             {
                 file.CopyTo(fileStream);
             }
-            return Ok(new Image { name = fileName + extension });
+            return Ok(new Image { name = upload + fileName + extension });
         }
 
 

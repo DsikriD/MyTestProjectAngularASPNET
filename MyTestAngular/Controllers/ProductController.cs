@@ -35,7 +35,6 @@ namespace MyTestAngular.Controllers
             if (product == null)
                 BadRequest();
 
-
             _db.Product.Add(product);
             await _db.SaveChangesAsync();
 
@@ -45,7 +44,6 @@ namespace MyTestAngular.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> Delete([FromRoute] int id)
         {
-        
             if (id == null)
                 return BadRequest();
 
