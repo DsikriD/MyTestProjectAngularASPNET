@@ -1,13 +1,14 @@
-<div class="card col-md-3 border-round box-shadow user-select-none border border-danger">
+<div class="card border-round box-shadow user-select-none mb-2 me-2 pb-3 pe-3 ps-3">
   <div class="card-body">
-    <h5 class="card-title">{{productCard.name}}</h5>
-    <img class="card-img-top img-rounded  mb-1 pt-5 pb-3 w-75 h-100" [src]="'..//images//product//'+productCard.image" alt="Card image cap">
-    {{imagePath + productCard.image}}
-  </div>
-  <div class="card-body">
+    <div class="row">
+      <div class="col-12 p-0">
+        <h5 class="card-title">{{productCard.name}}</h5>
+      </div>
+    </div>
+      <img class="card-img-top mt-2 p-1" style="height: 20vh;width:100%" [src]="'..//images//product//'+productCard.image" alt="Card image cap">
     <hr/>
     <div>
-      <h5 class="card-title" style="font-weight:bold">Price: {{productCard.price}}</h5>
+      <h5 class="card-title text-muted" style="font-weight:bold">Price: {{productCard.price}}</h5>
     </div>
     <div class="row pt-1 pb-1">
       <div class="col me-2 border text-center" style="background-color:aliceblue;">{{productCard.categoryId}}</div>
@@ -19,12 +20,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-md-6 form-control">
         <button class="btn btn-primary form-control">Детали</button>
       </div>
-      <div class="col-6 text-end">
+      <div class="col-md-6 form-control">
         <button class="btn btn-danger form-control">Купить</button>
       </div>
-      </div>
     </div>
+  </div>
 </div>
